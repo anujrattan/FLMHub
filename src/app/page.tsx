@@ -219,6 +219,15 @@ const footerIndustries = [
   "Individuals",
 ];
 
+const contactDetails = {
+  name: "FLM Hub",
+  address: "#436, Sector 114, Whitecity, 140307",
+  phones: [
+    { display: "8558887123", href: "tel:+918558887123" },
+    { display: "9815885566", href: "tel:+919815885566" },
+  ],
+};
+
 const portalFeatures = [
   "Live shipment tracking",
   "Delivery history",
@@ -853,6 +862,108 @@ export default function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════
+            ABOUT & CONTACT
+        ═══════════════════════════════════════════ */}
+        <section id="contact" className="scroll-mt-20 border-y border-white/[0.06] bg-slate-950 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+
+              {/* About */}
+              <div>
+                <p className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-amber-500">
+                  About Us
+                </p>
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  {contactDetails.name}
+                </h2>
+                <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-400">
+                  <p>
+                    FLM Hub is a logistics coordination service based in the Chandigarh Tricity.
+                    We manage pickup, carrier selection, shipment tracking and delivery support
+                    so businesses and individuals never have to run courier operations themselves.
+                  </p>
+                  <p>
+                    From a single document to daily business dispatches, you get one point of contact
+                    and full accountability from first mile to last mile.
+                  </p>
+                </div>
+              </div>
+
+              {/* Contact */}
+              <div>
+                <p className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-amber-500">
+                  Contact Us
+                </p>
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  Get In Touch
+                </h2>
+                <div className="mt-8 space-y-4">
+
+                  <div className="flex gap-4 rounded-2xl border border-white/[0.06] bg-slate-900/60 p-5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10">
+                      <MapPin className="h-4 w-4 text-amber-400" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                        Office Address
+                      </p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                        {contactDetails.address}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 rounded-2xl border border-white/[0.06] bg-slate-900/60 p-5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10">
+                      <Phone className="h-4 w-4 text-amber-400" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                        Phone
+                      </p>
+                      <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
+                        {contactDetails.phones.map((phone) => (
+                          <a
+                            key={phone.display}
+                            href={phone.href}
+                            className="text-sm font-medium text-slate-300 transition-colors hover:text-amber-400"
+                          >
+                            {phone.display}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <SchedulePickupButton
+                      size="default"
+                      className="border-0 bg-amber-500 font-semibold text-white shadow-lg shadow-amber-500/20 hover:bg-amber-600"
+                    />
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-white/25 bg-transparent font-semibold text-white shadow-none hover:bg-white/10 hover:text-white"
+                    >
+                      <a
+                        href="https://wa.me/918558887123"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Phone className="h-4 w-4" />
+                        WhatsApp
+                      </a>
+                    </Button>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════
             FINAL CTA
         ═══════════════════════════════════════════ */}
         <section className="bg-slate-950 py-20">
@@ -895,10 +1006,26 @@ export default function HomePage() {
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <p className="text-base font-bold tracking-tight text-white/80">
-                FLM Hub
+                {contactDetails.name}
               </p>
               <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-white/30">
                 First Mile Efficiency. Last Mile Certainty.
+              </p>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
+                {contactDetails.address}
+              </p>
+              <p className="mt-2 text-sm text-slate-500">
+                {contactDetails.phones.map((phone, index) => (
+                  <span key={phone.display}>
+                    {index > 0 && " · "}
+                    <a
+                      href={phone.href}
+                      className="transition-colors hover:text-amber-400/80"
+                    >
+                      {phone.display}
+                    </a>
+                  </span>
+                ))}
               </p>
             </div>
 
