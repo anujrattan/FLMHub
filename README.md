@@ -25,11 +25,11 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run build
 ```
 
-Static export is enabled only at build time (`NEXT_STATIC_EXPORT=true`). Output is written to `out/`.
+Static export runs automatically on `next build` (production). Output is written to `out/`.
 
 ### Cloudflare Pages setup
 
-1. **Connect repo** — build command: `npm run build`, output directory: `out`
+1. **Connect repo** — Framework preset: **Next.js (Static HTML Export)** (or build command `npm run build`, output directory `out`). Do **not** use the full Next.js Workers preset.
 2. **Functions** — `functions/api/leads.ts` is deployed automatically as `POST /api/leads`
 3. **Environment variables** (Cloudflare dashboard → Settings → Environment variables):
 
@@ -56,6 +56,18 @@ Schedule Pickup  →  modal form  →  POST /api/leads
 ```
 
 ## Dev troubleshooting
+
+### Site shows 404 on Cloudflare Pages
+
+Usually the build did not produce `out/index.html`. Check the Cloudflare deploy log, then confirm:
+
+| Setting | Required value |
+|---------|----------------|
+| Framework preset | **Next.js (Static HTML Export)** |
+| Build command | `npm run build` or `npx next build` |
+| Build output directory | `out` |
+
+If the preset is the full **Next.js** adapter (Workers), or the output directory is `.next`, the root URL will 404.
 
 If you see `ENOENT` errors for `.next/static/development/_buildManifest.js.tmp.*`:
 

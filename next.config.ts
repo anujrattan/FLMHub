@@ -13,12 +13,13 @@ import type { NextConfig } from "next";
  * DO NOT run `npm audit fix --force` — it upgrades to 15.5.x (broken).
  * DO NOT remove the exact version pins from package.json.
  *
- * Static export is build-time only (gated behind NEXT_STATIC_EXPORT env var).
- * Running `next dev` without that var gives a normal dev server with no
- * output:export conflict and no manifest write races.
+ * Static export is enabled only for production builds (`next build`).
+ * `next dev` runs without output:export to avoid manifest write races.
+ * Cloudflare Pages' default preset runs `npx next build` — do not gate
+ * export behind a custom env var or the `out/` folder will never be created.
  */
 
-const isStaticExport = process.env.NEXT_STATIC_EXPORT === "true";
+const isStaticExport = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   ...(isStaticExport ? { output: "export" as const } : {}),
