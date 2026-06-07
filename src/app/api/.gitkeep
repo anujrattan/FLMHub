@@ -1,0 +1,5 @@
+// Placeholder for future API routes.
+// Remove `output: "export"` from next.config.ts when adding server endpoints,
+// or deploy API separately (e.g. Cloudflare Workers).
+
+export {};
