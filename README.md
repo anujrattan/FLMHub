@@ -37,6 +37,7 @@ Static export is enabled only at build time (`NEXT_STATIC_EXPORT=true`). Output 
 |----------|-------------|
 | `SUPABASE_URL` | `https://xxxx.supabase.co` |
 | `SUPABASE_ANON_KEY` | Supabase anon key |
+| `SUPABASE_EDGE_FUNCTION_NAME` | Edge function name, e.g. `submit-lead` |
 
 Lead records use `client_id: flm_hub` and `source: flm-hub-schedule-pickup` (set in `functions/api/leads.ts`).
 

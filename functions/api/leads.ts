@@ -1,6 +1,7 @@
 interface Env {
   SUPABASE_URL: string;
   SUPABASE_ANON_KEY: string;
+  SUPABASE_EDGE_FUNCTION_NAME: string;
 }
 
 const LEAD_CLIENT_ID = "flm_hub";
@@ -46,8 +47,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   const supabaseUrl = env.SUPABASE_URL?.replace(/\/$/, "");
   const anonKey = env.SUPABASE_ANON_KEY;
+  const edgeFunctionName = env.SUPABASE_EDGE_FUNCTION_NAME?.trim();
 
-  if (!supabaseUrl || !anonKey) {
+  if (!supabaseUrl || !anonKey || !edgeFunctionName) {
     console.error("Missing required Cloudflare environment variables");
     return new Response(
       JSON.stringify({ success: false, error: "Server configuration error" }),
@@ -70,7 +72,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   try {
     const edgeResponse = await fetch(
-      `${supabaseUrl}/functions/v1/submit-lead`,
+      `${supabaseUrl}/functions/v1/${edgeFunctionName}`,
       {
         method: "POST",
         headers: {
