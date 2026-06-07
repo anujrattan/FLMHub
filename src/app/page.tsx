@@ -359,7 +359,11 @@ export default function HomePage() {
                     size="lg"
                     className="border-white/25 bg-white/[0.04] font-semibold text-white shadow-none hover:bg-white/10 hover:text-white"
                   >
-                    <a href="tel:+91">
+                    <a
+                      href="https://wa.me/918558887123"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Phone className="h-4 w-4" />
                       Talk To FLM
                     </a>
@@ -447,26 +451,23 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Comparison table */}
-            <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.04] sm:grid-cols-2">
+            {/* Comparison */}
+            <div className="mt-14 grid gap-4 sm:grid-cols-2">
 
               {/* Without FLM */}
-              <div className="bg-slate-950 p-7 text-center">
-                <div className="mb-6 flex items-center justify-center gap-3">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-500/10">
+              <div className="rounded-2xl border border-white/[0.06] bg-slate-900/60 p-7">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-rose-500/10">
                     <X className="h-3.5 w-3.5 text-rose-400" strokeWidth={2.5} />
                   </div>
                   <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-rose-400/80">
                     Without FLM
                   </p>
                 </div>
-                <ul className="space-y-0 divide-y divide-white/[0.04]">
+                <ul className="space-y-3">
                   {painPoints.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-center justify-center gap-3.5 py-3"
-                    >
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-rose-500/10">
+                    <li key={point} className="flex items-start gap-3">
+                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-rose-500/10">
                         <X className="h-2.5 w-2.5 text-rose-500" strokeWidth={3} />
                       </div>
                       <span className="text-sm text-slate-400">{point}</span>
@@ -475,86 +476,7 @@ export default function HomePage() {
                 </ul>
               </div>
 
-              {/* With FLM */}
-              <div className="relative overflow-hidden bg-slate-950 p-7 text-center">
-                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-amber-500/[0.07] blur-3xl" />
-                <div className="mb-6 flex items-center justify-center gap-3">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/15">
-                    <Check className="h-3.5 w-3.5 text-amber-400" strokeWidth={2.5} />
-                  </div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-400/80">
-                    FLM Handles It
-                  </p>
-                </div>
-                <ul className="space-y-0 divide-y divide-white/[0.04]">
-                  {flmHandles.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center justify-center gap-3.5 py-3"
-                    >
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-amber-500/15">
-                        <Check className="h-2.5 w-2.5 text-amber-400" strokeWidth={3} />
-                      </div>
-                      <span className="text-sm font-medium text-slate-200">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════
-            WHY NOT DIRECT — COURIER COMPARISON
-        ═══════════════════════════════════════════ */}
-        <section className="bg-slate-950 pb-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
-            {/* Divider */}
-            <div className="mb-14 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-            {/* Heading */}
-            <div className="mb-12 text-center">
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Why Not Just Use A Courier Company Directly?
-              </h3>
-              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-400">
-                You can — but you&apos;ll be the one doing all the coordination.
-                FLM sits between you and the carriers so you never have to.
-              </p>
-            </div>
-
-            {/* Side-by-side comparison */}
-            <div className="grid gap-4 sm:grid-cols-2">
-
-              {/* Traditional */}
-              <div className="rounded-2xl border border-white/[0.06] bg-slate-900/60 p-7">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-rose-500/10">
-                    <X className="h-3.5 w-3.5 text-rose-400" strokeWidth={2.5} />
-                  </div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-rose-400/80">
-                    Traditional Courier Experience
-                  </p>
-                </div>
-                <ul className="space-y-3">
-                  {[
-                    "Visit courier office yourself",
-                    "Coordinate pickups manually",
-                    "Track across different provider portals",
-                    "Follow up directly with carrier support",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-rose-500/10">
-                        <X className="h-2.5 w-2.5 text-rose-500" strokeWidth={3} />
-                      </div>
-                      <span className="text-sm text-slate-400">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* FLM */}
+              {/* FLM Handles It */}
               <div className="relative overflow-hidden rounded-2xl border border-amber-500/20 bg-slate-900/60 p-7">
                 <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-amber-500/[0.08] blur-3xl" />
                 <div className="mb-6 flex items-center gap-3">
@@ -562,17 +484,11 @@ export default function HomePage() {
                     <Check className="h-3.5 w-3.5 text-amber-400" strokeWidth={2.5} />
                   </div>
                   <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-400/80">
-                    FLM Experience
+                    FLM Handles It
                   </p>
                 </div>
                 <ul className="space-y-3">
-                  {[
-                    "Pickup from your location",
-                    "One point of contact",
-                    "Carrier coordination handled for you",
-                    "Centralized shipment visibility",
-                    "Dedicated support",
-                  ].map((item) => (
+                  {flmHandles.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-amber-500/15">
                         <Check className="h-2.5 w-2.5 text-amber-400" strokeWidth={3} />
@@ -959,7 +875,11 @@ export default function HomePage() {
                 size="lg"
                 className="border-white/25 bg-transparent font-semibold text-white shadow-none hover:bg-white/10 hover:text-white active:bg-white/15"
               >
-                <a href="tel:+91">
+                <a
+                  href="https://wa.me/918558887123"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Phone className="h-4 w-4" />
                   Talk To FLM
                 </a>
